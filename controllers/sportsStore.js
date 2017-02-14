@@ -14,30 +14,21 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
     $scope.sendOrder = function(shippingDetails){
         var order = angular.copy(shippingDetails);
         order.products = cart.getProducts();
-//        $http.post(orderUrl, {"order":'huj'})
-//        .then(function(response){
-////            $scope.data.products = response.data;
-////            $scope.data.orderId = response.data.id;
-//            alert(response.data);
-//            cart.getProducts().length = 0;
-//            $location.path("/complete");
-//        },function(error){
-//            $scope.data.orderError = error;
-//            $location.path("/complete");
-//        });
-        var data = "Huj kurwa!";
         $http({
             url: orderUrl,
-//            data : $.param(data),
-            data : $scope.data,
+            data : $scope.data.products,
             method : 'POST',
             headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
         })
         .then(function(response) {
-                alert(response.data);
+                $scope.data.orderId = response.data;
+//                $location.path("/complete");         // commented for testing
+//                cart.getProducts().length = 0;
+            alert(response.data);                       //delete after testing
         },
-        function(response) { // optional
-                alert("error");
+        function(response) {
+                $scope.data.orderError = "error";
+                $location.path("/complete");
         });
     }
 
