@@ -1,7 +1,7 @@
 var app = angular.module('sportsStore', ['customFilters', 'cart', 'ngRoute']);
 
 app.constant("dataUrl", "json/products.json");
-app.constant("orderUrl", "php/orders/.......................")
+app.constant("orderUrl", "phpmodule/saveOrder.php")
 app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl, $location){
     $scope.data = {};
     $http.get(dataUrl).then(function(response){
@@ -14,15 +14,30 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
     $scope.sendOrder = function(shippingDetails){
         var order = angular.copy(shippingDetails);
         order.products = cart.getProducts();
-        $http.post(orderUrl, order)
-        .then(function(response){
-//            $scope.data.products = response.data;
-            $scope.data.orderId = response.data.id;
-            cart.getProducts().length = 0;
-            $location.path("/complete");
-        },function(error){
-            $scope.data.orderError = error;
-            $location.path("/complete");
+//        $http.post(orderUrl, {"order":'huj'})
+//        .then(function(response){
+////            $scope.data.products = response.data;
+////            $scope.data.orderId = response.data.id;
+//            alert(response.data);
+//            cart.getProducts().length = 0;
+//            $location.path("/complete");
+//        },function(error){
+//            $scope.data.orderError = error;
+//            $location.path("/complete");
+//        });
+        var data = "Huj kurwa!";
+        $http({
+            url: orderUrl,
+//            data : $.param(data),
+            data : $scope.data,
+            method : 'POST',
+            headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+        })
+        .then(function(response) {
+                alert(response.data);
+        },
+        function(response) { // optional
+                alert("error");
         });
     }
 
