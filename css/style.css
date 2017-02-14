@@ -1,0 +1,22 @@
+.navbar-right
+{
+    float: right !important;
+    margin-right: 5px;
+}
+.navbar-text
+{
+    margin-right: 10px;
+}
+.ng-invalid
+{
+    background-color: lightpink;
+}
+.ng-valid
+{
+    background-color: lightgreen;
+}
+span.error
+{
+    color: red;
+    font-weight: bold;
+}

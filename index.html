@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="sportsStore">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ready to work!</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="sportsStoreCtrl">
+    <div class="navbar navbar-inverse">
+        <a href="#" class="navbar-brand">Sklep Sportowy</a>
+        <cart-summary />
+    </div>
+    <div class="alert alert-danger" ng-show="data.error">
+        Błąd, dane produktu nie zostały wczytane.
+        <a href="index.html" class="alert-link">Kliknij tutaj, aby spróbować ponownie...</a>
+    </div>
+<!--    <ng-include src="'views/productList.html'"></ng-include>-->
+    <ng-view></ng-view>
+
+<!--JavaScript-->
+<script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="ngmodules/angular-route.js"></script>
+<script src="ngmodules/angular-animate.min.js"></script>
+<script src="https://code.angularjs.org/1.2.22/i18n/angular-locale_pl-pl.js"></script>
+<script src="controllers/sportsStore.js"></script>
+<script src="filters/customFilters.js"></script>
+<script src="controllers/productListControllers.js"></script>
+<script src="components/cart/cart.js"></script>
+<script src="controllers/checkoutControllers.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
