@@ -28,7 +28,7 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
         },
         function(response) {
                 $scope.data.orderError = "error";
-                $location.ath("/complete");
+//                $location.ath("/complete"); //for testing
         });
     }
 
