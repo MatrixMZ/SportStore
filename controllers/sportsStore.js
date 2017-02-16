@@ -24,11 +24,11 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
                 $scope.data.orderId = response.data;
 //                $location.path("/complete");         // commented for testing
 //                cart.getProducts().length = 0;
-            alert(response.data);                       //delete after testing
+                    alert(response.data);                //delete after testing
         },
         function(response) {
                 $scope.data.orderError = "error";
-                $location.path("/complete");
+                $location.ath("/complete");
         });
     }
 
