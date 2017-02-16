@@ -39,19 +39,19 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
 app.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(false).hashPrefix('');
     $routeProvider.when('/checkout', {
-        templateUrl: "/views/checkoutSummary.html"
+        templateUrl: "views/checkoutSummary.html"
     });
     $routeProvider.when('/products', {
-        templateUrl: "/views/productList.html"
+        templateUrl: "views/productList.html"
     });
     $routeProvider.otherwise({
-        templateUrl: "/views/productList.html"
+        templateUrl: "views/productList.html"
     });
     $routeProvider.when("/complete", {
-        templateUrl: "/views/thankYou.html"
+        templateUrl: "views/thankYou.html"
     });
     $routeProvider.when("/placeorder", {
-        templateUrl: "/views/placeOrder.html"
+        templateUrl: "views/placeOrder.html"
     });
 
 });
