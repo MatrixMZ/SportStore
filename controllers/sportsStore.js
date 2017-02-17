@@ -16,7 +16,7 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
         order.products = cart.getProducts();
         $http({
             url: orderUrl,
-            data : $scope.data.products,
+            data : $scope.data,
             method : 'POST',
             headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
         })
@@ -28,7 +28,7 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
         },
         function(response) {
                 $scope.data.orderError = "error";
-//                $location.ath("/complete"); //for testing
+                $location.path("/complete");
         });
     }
 

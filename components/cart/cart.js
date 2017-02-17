@@ -40,6 +40,7 @@ angular.module("cart", [])
         templateUrl: "components/cart/cartSummary.html",
         controller: function($scope){
             var cartData = cart.getProducts();
+            $scope.data.cart = cartData;
 
             $scope.total = function(){
                 var total = 0;
