@@ -1,7 +1,7 @@
 var app = angular.module('sportsStore', ['customFilters', 'cart', 'ngRoute']);
 
 app.constant("dataUrl", "json/products.json");
-app.constant("orderUrl", "phpmodule/saveOrder.php")
+app.constant("orderUrl", "http://localhost:2403/orders");
 app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl, $location){
     $scope.data = {};
     $http.get(dataUrl).then(function(response){
@@ -14,17 +14,12 @@ app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl
     $scope.sendOrder = function(shippingDetails){
         var order = angular.copy(shippingDetails);
         order.products = cart.getProducts();
-        $http({
-            url: orderUrl,
-            data : $scope.data,
-            method : 'POST',
-            headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-        })
+
+        $http.post(orderUrl, order)
         .then(function(response) {
-                $scope.data.orderId = response.data;
-//                $location.path("/complete");         // commented for testing
-//                cart.getProducts().length = 0;
-                    alert(response.data);                //delete after testing
+                $scope.data.orderId = response.data.id;
+                $location.path("/complete");
+                cart.getProducts().length = 0;
         },
         function(response) {
                 $scope.data.orderError = "error";

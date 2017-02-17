@@ -1,6 +1,6 @@
 angular.module("sportsStore")
 .controller("cartSummaryController", function($scope, cart){
-    $scope.cartData = cart.getProducts();
+    $scope.cartData = cart.getProducts();// own extenstion
 
     $scope.total = function(){
         var total = 0;
