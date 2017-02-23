@@ -1,6 +1,7 @@
 var app = angular.module('sportsStore', ['customFilters', 'cart', 'ngRoute']);
 
-app.constant("dataUrl", "json/products.json");
+//app.constant("dataUrl", "json/products.json");
+app.constant("dataUrl", "http://localhost:2403/products");
 app.constant("orderUrl", "http://localhost:2403/orders");
 app.controller('sportsStoreCtrl', function($scope,cart, $http, dataUrl, orderUrl, $location){
     $scope.data = {};
